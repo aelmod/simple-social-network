@@ -35,13 +35,12 @@ public class TestRepository {
                 sql, new Object[]{id}, new BeanPropertyRowMapper<>(User.class));
     }
 
-    public User getUser(String id) {
+    public User getUserByUsername(String username) {
         //Timestamp.valueOf()
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE nickname = ?";
         return jdbcTemplate.queryForObject(
-                sql, new Object[]{id}, new BeanPropertyRowMapper<>(User.class));
+                sql, new Object[]{username}, new BeanPropertyRowMapper<>(User.class));
     }
-
 
 
     public void saveUser(User user) {

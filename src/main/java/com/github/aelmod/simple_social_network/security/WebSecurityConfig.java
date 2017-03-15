@@ -39,11 +39,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .failureHandler((httpServletRequest, httpServletResponse, e) -> {
                     httpServletResponse.setStatus(HttpStatus.FORBIDDEN.value());
-                    httpServletResponse.getOutputStream().println("idi nahuy\n<br>" + e.getMessage());
+                    httpServletResponse.sendRedirect("/login");
+//                    httpServletResponse.getOutputStream().println("idi nahuy\n<br>" + e.getMessage());
                 })
                 .successHandler((httpServletRequest, httpServletResponse, authentication) -> {
                     httpServletResponse.setStatus(HttpStatus.OK.value());
-                    httpServletResponse.getOutputStream().println("Hi");
+                    httpServletResponse.sendRedirect("/");
+//                    httpServletResponse.getOutputStream().println("Hi");
                 })
                 .loginPage("/login")
                 .permitAll()
