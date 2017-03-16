@@ -40,7 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler((httpServletRequest, httpServletResponse, e) -> {
                     httpServletResponse.setStatus(HttpStatus.FORBIDDEN.value());
                     httpServletResponse.sendRedirect("/login");
-//                    httpServletResponse.getOutputStream().println("idi nahuy\n<br>" + e.getMessage());
                 })
                 .successHandler((httpServletRequest, httpServletResponse, authentication) -> {
                     httpServletResponse.setStatus(HttpStatus.OK.value());
